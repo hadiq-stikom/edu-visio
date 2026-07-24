@@ -10,7 +10,20 @@ import { Header, Footer } from '@/components/Navigation';
 export default function SubjectPage() {
   const { slug } = useParams();
   const subject = SUBJECTS.find((s) => s.slug === slug);
+  const storageKey = `openChapters_${slug}`;
+
   const [openChapters, setOpenChapters] = useState<Record<string, boolean>>({});
+
+  React.useEffect(() => {
+    const saved = sessionStorage.getItem(storageKey);
+    if (saved) {
+      try { setOpenChapters(JSON.parse(saved)); } catch { /* ignore */ }
+    }
+  }, [storageKey]);
+
+  React.useEffect(() => {
+    sessionStorage.setItem(storageKey, JSON.stringify(openChapters));
+  }, [openChapters, storageKey]);
 
   if (!subject) return <div className="p-10 text-center">Mata Pelajaran tidak ditemukan.</div>;
 
