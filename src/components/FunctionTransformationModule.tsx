@@ -263,10 +263,10 @@ export default function FunctionTransformationModule({ mode = 'combined-transfor
           <div className="relative bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-xl overflow-hidden min-h-[400px]">
             
             {showSuccess && (
-              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-emerald-600/95 backdrop-blur-sm animate-in fade-in duration-300 p-6 text-center">
-                <Star className="h-20 w-20 text-yellow-300 fill-yellow-300 mb-2 animate-bounce" />
-                <h3 className="text-3xl font-black text-white drop-shadow-md mb-2">Tepat Sekali!</h3>
-                <p className="text-emerald-100 font-medium text-lg mb-6">+100 Poin</p>
+              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-emerald-600/95 dark:bg-emerald-950/95 backdrop-blur-sm animate-in fade-in duration-300 p-6 text-center">
+                <Star className="w-20 h-20 text-yellow-300 fill-yellow-300 mb-4 drop-shadow-[0_0_15px_rgba(253,224,71,0.6)]" />
+                <h3 className="text-3xl font-bold text-white mb-2 drop-shadow-md">Transformasi Berhasil!</h3>
+                <div className="bg-emerald-800/50 dark:bg-emerald-900/80 border border-emerald-400/50 p-4 rounded-xl text-emerald-50 max-w-md">+100 Poin</div>
                 
                 <div className="bg-emerald-800/50 p-4 rounded-xl border border-emerald-500/30 w-full max-w-md">
                   <p className="text-sm text-emerald-50 mb-2">Anda berhasil menyusun fungsi:</p>

@@ -139,10 +139,10 @@ export default function CombinatoricsModule() {
             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
             
             {showSuccess && (
-              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-emerald-600/95 backdrop-blur-sm animate-in zoom-in duration-300 p-6 text-center">
-                <Star className="h-20 w-20 text-yellow-300 fill-yellow-300 mb-3 animate-bounce" />
-                <h3 className="text-4xl font-black text-white drop-shadow-md mb-2">Brankas Terbuka!</h3>
-                <div className="bg-emerald-800/50 border border-emerald-400/50 p-4 rounded-xl text-emerald-50 max-w-md">
+              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-emerald-600/95 dark:bg-emerald-950/95 backdrop-blur-sm animate-in zoom-in duration-300 p-6 text-center">
+                <Star className="w-20 h-20 text-yellow-300 fill-yellow-300 mb-4 drop-shadow-[0_0_15px_rgba(253,224,71,0.6)]" />
+                <h3 className="text-3xl font-bold text-white mb-2 drop-shadow-md">Tepat Sekali!</h3>
+                <div className="bg-emerald-800/50 dark:bg-emerald-900/80 border border-emerald-400/50 p-4 rounded-xl text-emerald-50 max-w-md">
                   <p className="font-bold text-lg mb-2">Jawaban Benar: {fmt(currentResult)} Cara</p>
                   <p className="text-sm leading-relaxed">
                     Tepat sekali! Kasus ini menggunakan <strong>{activeCase.type === 'P' ? 'Permutasi' : 'Kombinasi'}</strong> karena urutan <strong>{activeCase.type === 'P' ? 'diperhatikan' : 'TIDAK diperhatikan'}</strong>. Anda memilih r={activeCase.r} dari total n={activeCase.n}.

@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { UserProvider } from "@/contexts/UserContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
+import MobileNavigation from "@/components/MobileNavigation";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,11 +30,16 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-screen flex flex-col">
-        <div className="flex-1">{children}</div>
-        <footer className="text-center text-xs text-slate-400 py-4 border-t border-slate-100">
-          &copy; copyright Hadiq 2026
-        </footer>
+      <body className="min-h-screen flex flex-col pb-16 sm:pb-0 bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+        <ThemeProvider>
+          <UserProvider>
+            <div className="flex-1">{children}</div>
+            <footer className="text-center text-xs text-slate-400 py-4 border-t border-slate-100 dark:border-slate-800">
+              &copy; copyright Hadiq 2026
+            </footer>
+            <MobileNavigation />
+          </UserProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

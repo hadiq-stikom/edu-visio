@@ -18,7 +18,7 @@ export default function OhmLawModule() {
   const current = v / r;
   
   // Target Current
-  const [targetI, setTargetI] = useState(2); 
+  const [targetI, setTargetI] = useState(4); 
   
   const generateNewTarget = () => {
     // Current is V / R. Let's find a valid integer or .5 decimal target
@@ -115,10 +115,10 @@ export default function OhmLawModule() {
           <div className="bg-slate-900 rounded-3xl border-4 border-slate-700 shadow-2xl p-8 relative overflow-hidden flex flex-col items-center justify-center min-h-[400px]">
             
             {showSuccess && (
-              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-emerald-600/95 backdrop-blur-sm animate-in zoom-in duration-300 p-6 text-center">
-                <Star className="h-20 w-20 text-yellow-300 fill-yellow-300 mb-3 animate-bounce" />
-                <h3 className="text-4xl font-black text-white drop-shadow-md mb-2">Arus Tepat!</h3>
-                <div className="bg-emerald-800/50 border border-emerald-400/50 p-4 rounded-xl text-emerald-50 max-w-md">
+              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-emerald-600/95 dark:bg-emerald-950/95 backdrop-blur-sm animate-in zoom-in duration-300 p-6 text-center">
+                <Star className="w-20 h-20 text-yellow-300 fill-yellow-300 mb-4 drop-shadow-[0_0_15px_rgba(253,224,71,0.6)]" />
+                <h3 className="text-3xl font-bold text-white mb-2 drop-shadow-md">Arus Tepat!</h3>
+                <div className="bg-emerald-800/50 dark:bg-emerald-900/80 border border-emerald-400/50 p-4 rounded-xl text-emerald-50 max-w-md">
                   <p className="font-bold text-lg mb-2">Arus (I): {current} A</p>
                   <p className="text-sm leading-relaxed">
                     Kerja bagus! Tegangan {v} V dibagi dengan Hambatan {r} Ω menghasilkan Arus persis {current} Ampere.
@@ -152,9 +152,12 @@ export default function OhmLawModule() {
                          key={`e-${i}`}
                          className="absolute w-4 h-4 bg-sky-200 rounded-full shadow-[0_0_8px_4px_rgba(186,230,253,0.8)] border border-white"
                          style={{
-                           top: `${20 + Math.random() * 60}%`, // random vertical pos within wire
+                           top: `${20 + ((i * 137) % 60)}%`, // deterministic pseudo-random vertical pos within wire
                            left: '-5%',
-                           animation: current > 0 ? `moveElectron ${animationDuration}s linear infinite` : 'none',
+                           animationName: current > 0 ? 'moveElectron' : 'none',
+                           animationDuration: `${animationDuration}s`,
+                           animationTimingFunction: 'linear',
+                           animationIterationCount: 'infinite',
                            animationDelay: `-${delay}s`
                          }}
                        />

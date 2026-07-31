@@ -119,10 +119,10 @@ export default function ResistorCircuitModule() {
           <div className="bg-gray-900 rounded-3xl border-4 border-gray-700 shadow-2xl p-8 relative overflow-hidden flex flex-col items-center justify-center min-h-[400px]">
             
             {showSuccess && (
-              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-emerald-600/95 backdrop-blur-sm animate-in zoom-in duration-300 p-6 text-center">
-                <Star className="h-20 w-20 text-yellow-300 fill-yellow-300 mb-3 animate-bounce" />
-                <h3 className="text-4xl font-black text-white drop-shadow-md mb-2">Terang Sempurna!</h3>
-                <div className="bg-emerald-800/50 border border-emerald-400/50 p-4 rounded-xl text-emerald-50 max-w-md">
+              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-emerald-600/95 dark:bg-emerald-950/95 backdrop-blur-sm animate-in zoom-in duration-300 p-6 text-center">
+                <Star className="w-20 h-20 text-yellow-300 fill-yellow-300 mb-4 drop-shadow-[0_0_15px_rgba(253,224,71,0.6)]" />
+                <h3 className="text-3xl font-bold text-white mb-2 drop-shadow-md">Hambatan Tepat!</h3>
+                <div className="bg-emerald-800/50 dark:bg-emerald-900/80 border border-emerald-400/50 p-4 rounded-xl text-emerald-50 max-w-md">
                   <p className="font-bold text-lg mb-2">Daya: {power} Watt</p>
                   <p className="text-sm leading-relaxed">
                     Tepat! Anda menyusun hambatan secara <strong>{isParallel ? 'Paralel' : 'Seri'}</strong> sehingga Hambatan Total (R) menjadi {rEq.toFixed(2)} Ω. Dengan tegangan {v} V, daya yang dihasilkan sesuai target!

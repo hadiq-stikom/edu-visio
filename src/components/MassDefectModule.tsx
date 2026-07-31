@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Activity, BookOpen, X, Lightbulb, Target, Star, MoveHorizontal, Atom } from 'lucide-react';
+import { useUser } from '@/contexts/UserContext';
 
 export default function MassDefectModule() {
   const [showTheoryModal, setShowTheoryModal] = useState(false);
@@ -23,6 +24,7 @@ export default function MassDefectModule() {
   const currentMass = massHe4 + (massDefect * (separation / 100));
 
   // Gamification target
+  const { addScore, markModuleCompleted } = useUser();
   const [score, setScore] = useState(0);
   const [showSuccess, setShowSuccess] = useState(false);
   const [hasWon, setHasWon] = useState(false);
@@ -36,6 +38,8 @@ export default function MassDefectModule() {
       setShowSuccess(true);
       setHasWon(true);
       setScore(s => s + 100);
+      addScore(100);
+      markModuleCompleted('mass-defect');
       const timer = setTimeout(() => {
         setShowSuccess(false);
       }, 4000);

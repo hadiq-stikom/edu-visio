@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Activity, BookOpen, X, Lightbulb, Target, Star, MoveHorizontal, Radiation } from 'lucide-react';
+import { useUser } from '@/contexts/UserContext';
 
 export default function RadioactivityModule() {
   const [showTheoryModal, setShowTheoryModal] = useState(false);
@@ -15,6 +16,7 @@ export default function RadioactivityModule() {
   const remainingPercentage = 100 * Math.pow(0.5, timeCycles);
 
   // Gamification target
+  const { addScore, markModuleCompleted } = useUser();
   const [score, setScore] = useState(0);
   const [showSuccess, setShowSuccess] = useState(false);
   const [hasWon, setHasWon] = useState(false);
@@ -28,6 +30,8 @@ export default function RadioactivityModule() {
       setShowSuccess(true);
       setHasWon(true);
       setScore(s => s + 100);
+      addScore(100);
+      markModuleCompleted('radioactivity');
       const timer = setTimeout(() => {
         setShowSuccess(false);
       }, 4000);

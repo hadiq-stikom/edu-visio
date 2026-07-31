@@ -138,7 +138,7 @@ export default function SubjectPage() {
                           </div>
 
                           {topic.hasSimulation ? (
-                            <Link href={`/simulation/${topic.simulationType}`} className="flex items-center gap-2 bg-emerald-600 text-white px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-emerald-700 transition-all whitespace-nowrap">
+                            <Link href={`/simulation/${topic.simulationType}`} className="flex items-center gap-2 bg-emerald-600 text-white px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-emerald-700 transition-all whitespace-nowrap border border-transparent shadow-sm dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/30 dark:hover:bg-emerald-500/20 dark:shadow-none">
                               <PlayCircle className="h-4 w-4" /> Mulai Simulasi
                             </Link>
                           ) : (

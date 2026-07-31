@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Activity, BookOpen, X, Lightbulb, Target, Star, MoveHorizontal, Flame } from 'lucide-react';
+import { Activity, BookOpen, X, Lightbulb, Target, Star, MoveHorizontal, Flame, RotateCcw } from 'lucide-react';
+import { useUser } from '@/contexts/UserContext';
 
 export default function NuclearReactionModule() {
   const [showTheoryModal, setShowTheoryModal] = useState(false);
@@ -13,7 +14,8 @@ export default function NuclearReactionModule() {
   const [guessA, setGuessA] = useState(1);
   const [guessZ, setGuessZ] = useState(1);
   
-  // Gamification target
+  // Gamification
+  const { addScore, markModuleCompleted } = useUser();
   const [score, setScore] = useState(0);
   const [showSuccess, setShowSuccess] = useState(false);
   const [hasWon, setHasWon] = useState(false);
@@ -26,6 +28,8 @@ export default function NuclearReactionModule() {
       setShowSuccess(true);
       setHasWon(true);
       setScore(s => s + 100);
+      addScore(100);
+      markModuleCompleted('nuclear-reaction');
       const timer = setTimeout(() => {
         setShowSuccess(false);
       }, 4000);

@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { SubjectIcon } from '@/components/SubjectIcon';
-import { BookOpen, Search, ArrowRight, Compass, HelpCircle } from 'lucide-react';
+import { BookOpen, Search, ArrowRight, Compass, HelpCircle, CheckCircle2 } from 'lucide-react';
+import { useUser } from '@/contexts/UserContext';
+import { SUBJECTS } from '@/lib/data';
 
 interface ModuleCard {
   id: string;
@@ -575,6 +577,7 @@ export default function DashboardPage() {
   const [activeGrade, setActiveGrade] = useState<Grade>('kelas-12');
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<Category>('Semua');
+  const { completedModules, isMounted } = useUser();
 
   const filteredModules = modulesData[activeGrade].filter((mod) => {
     const matchesSearch =
@@ -613,7 +616,7 @@ export default function DashboardPage() {
                     behavior: 'smooth'
                   });
                 }}
-                className="px-8 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl shadow-lg shadow-emerald-600/20 transition-all flex items-center gap-2 w-full sm:w-auto justify-center"
+                className="px-8 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl shadow-lg shadow-emerald-600/20 transition-all flex items-center gap-2 w-full sm:w-auto justify-center border border-transparent dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/30 dark:shadow-none dark:hover:bg-emerald-500/20"
               >
                 Mulai Belajar Sekarang <ArrowRight className="h-4 w-4" />
               </button>
@@ -644,10 +647,10 @@ export default function DashboardPage() {
             <button
               key={grade}
               onClick={() => setActiveGrade(grade)}
-              className={`px-5 py-2.5 text-sm font-semibold rounded-xl transition-all whitespace-nowrap ${
+              className={`px-5 py-2.5 text-sm font-semibold rounded-xl transition-all whitespace-nowrap border border-transparent ${
                 activeGrade === grade
-                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/15'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white'
+                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/15 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/30 dark:shadow-none'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
               }`}
             >
               {gradeLabels[grade]}
@@ -656,8 +659,11 @@ export default function DashboardPage() {
         </div>
 
         {/* Search & Category Filter Bar */}
-        <div id="search-filter-section" className="flex flex-col md:flex-row gap-4 items-center justify-between mb-10 bg-white dark:bg-gray-900 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800/80 shadow-sm max-w-5xl mx-auto">
-          <div className="relative w-full md:w-96">
+        <div id="search-filter-section" className="bg-gradient-to-br from-emerald-50/80 to-teal-50/30 dark:from-emerald-900/10 dark:to-teal-900/5 backdrop-blur-xl rounded-3xl p-4 sm:p-6 mb-10 shadow-lg shadow-emerald-900/5 border border-emerald-100/60 dark:border-emerald-800/30 flex flex-col md:flex-row items-center justify-between gap-4 relative overflow-hidden">
+          {/* Decorative subtle background shape */}
+          <div className="absolute -top-24 -right-24 w-48 h-48 bg-emerald-400/10 dark:bg-emerald-400/5 rounded-full blur-3xl pointer-events-none"></div>
+          
+          <div className="relative w-full md:max-w-md flex-shrink-0 z-10">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 h-5 w-5" />
             <input
               type="text"
@@ -668,15 +674,15 @@ export default function DashboardPage() {
             />
           </div>
 
-          <div className="flex items-center gap-2 w-full md:w-auto overflow-x-auto justify-start md:justify-end">
+          <div className="grid grid-cols-2 gap-2 w-full md:flex md:w-auto md:justify-end">
             {(['Semua', 'MIPA', 'IPS', 'AGAMA'] as const).map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveCategory(tab)}
-                className={`px-4 py-2 text-sm font-medium rounded-xl transition-all whitespace-nowrap ${
+                className={`px-3 py-2 text-sm font-medium rounded-xl transition-all whitespace-nowrap flex items-center justify-center border border-transparent ${
                   activeCategory === tab
-                    ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/15'
-                    : 'bg-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800/60'
+                    ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/15 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/30 dark:shadow-none'
+                    : 'bg-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-gray-800/50'
                 }`}
               >
                 {tab === 'Semua' ? 'Semua Kategori' : tab}
@@ -713,6 +719,37 @@ export default function DashboardPage() {
                   <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
                     {mod.description}
                   </p>
+                  
+                  {isMounted && (
+                    (() => {
+                      const subjectFull = SUBJECTS.find(s => s.id === mod.id);
+                      if (subjectFull) {
+                        const allTopicIds = subjectFull.chapters.flatMap(ch => ch.topics.map(t => t.simulationType).filter(Boolean) as string[]);
+                        const total = allTopicIds.length;
+                        const completed = allTopicIds.filter(id => completedModules.includes(id)).length;
+                        const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+                        
+                        return (
+                          <div className="mb-4 space-y-2">
+                            <div className="flex justify-between items-center text-xs">
+                              <span className="font-semibold text-gray-600 dark:text-gray-300">Progres Belajar</span>
+                              <span className="font-bold text-emerald-600 dark:text-emerald-400">{percentage}%</span>
+                            </div>
+                            <div className="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2 overflow-hidden border border-gray-200/50 dark:border-gray-700/50">
+                              <div 
+                                className="bg-gradient-to-r from-emerald-500 to-teal-500 h-2 rounded-full transition-all duration-1000 ease-out" 
+                                style={{ width: `${percentage}%` }}
+                              ></div>
+                            </div>
+                            <div className="text-[10px] text-gray-400 dark:text-gray-500 text-right">
+                              {completed} dari {total} Topik Selesai
+                            </div>
+                          </div>
+                        );
+                      }
+                      return null;
+                    })()
+                  )}
                 </div>
 
                 <div className="border-t border-gray-100 dark:border-gray-800/80 pt-4 mt-2">
@@ -734,7 +771,7 @@ export default function DashboardPage() {
 
                   <Link
                     href={`/subject/${mod.slug}-${activeGrade.split('-')[1]}`}
-                    className="flex items-center justify-center gap-1.5 w-full bg-gray-50 dark:bg-gray-950 hover:bg-emerald-600 dark:hover:bg-emerald-600 hover:text-white dark:hover:text-white text-gray-700 dark:text-gray-300 font-semibold text-sm py-3 px-4 rounded-xl border border-gray-100 dark:border-gray-800/80 transition-all group-hover:border-emerald-600"
+                    className="flex items-center justify-center gap-1.5 w-full bg-gray-50 dark:bg-gray-950 hover:bg-emerald-600 dark:hover:bg-emerald-500/20 hover:text-white dark:hover:text-emerald-400 text-gray-700 dark:text-gray-300 font-semibold text-sm py-3 px-4 rounded-xl border border-gray-100 dark:border-gray-800/80 transition-all group-hover:border-emerald-600 dark:group-hover:border-emerald-500/50"
                   >
                     Buka Modul Pembelajaran
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

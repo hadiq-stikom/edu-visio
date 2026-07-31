@@ -128,16 +128,15 @@ export default function ElectricFieldModule() {
             <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'linear-gradient(#334155 1px, transparent 1px), linear-gradient(90deg, #334155 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
             
             {showSuccess && (
-              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-emerald-600/95 backdrop-blur-sm animate-in zoom-in duration-300 p-6 text-center">
-                <Star className="h-20 w-20 text-yellow-300 fill-yellow-300 mb-3 animate-bounce" />
-                <h3 className="text-4xl font-black text-white drop-shadow-md mb-2">Target Tercapai!</h3>
-                <div className="bg-emerald-800/50 border border-emerald-400/50 p-4 rounded-xl text-emerald-50 max-w-md">
+              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-emerald-600/95 dark:bg-emerald-950/95 backdrop-blur-sm animate-in zoom-in duration-300 p-6 text-center">
+                <Star className="w-20 h-20 text-yellow-300 fill-yellow-300 mb-4 drop-shadow-[0_0_15px_rgba(253,224,71,0.6)]" />
+                <h3 className="text-3xl font-bold text-white mb-2 drop-shadow-md">Medan Tepat!</h3>
+                <div className="bg-emerald-800/50 dark:bg-emerald-900/80 border border-emerald-400/50 p-4 rounded-xl text-emerald-50 max-w-md">
                   <p className="font-bold text-lg mb-2">Medan E = {Math.abs(field)} Satuan</p>
                   <p className="text-sm leading-relaxed">
                     Tepat! Dengan Muatan Sumber Q = {q} pada jarak r = {r}, arah medan listrik <strong>{isAway ? 'Menjauhi' : 'Menuju'}</strong> Muatan Sumber.
                   </p>
                 </div>
-                <p className="text-emerald-100 font-bold mt-4 text-xl">+100 Poin</p>
               </div>
             )}
 

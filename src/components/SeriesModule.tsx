@@ -36,7 +36,7 @@ export default function SeriesModule() {
   return (
     <div className="max-w-6xl mx-auto p-6 bg-white rounded-3xl shadow-xl border border-slate-100">
       <div className="text-center mb-6">
-        <span className="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold mb-2">
+        <span className="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 text-xs font-semibold mb-2">
           Simulasi Target Hafalan
         </span>
         <h2 className="text-2xl font-bold text-slate-800">
