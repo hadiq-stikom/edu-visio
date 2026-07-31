@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { BookOpen, GraduationCap, Compass, Layers } from 'lucide-react';
+import Image from 'next/image';
+import { BookOpen, Compass, Layers } from 'lucide-react';
 
 export const Header = () => {
   return (
@@ -8,8 +9,8 @@ export const Header = () => {
       <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2.5 transition-opacity hover:opacity-90">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-500/20">
-              <GraduationCap className="h-6 w-6" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white shadow-md overflow-hidden border border-gray-100 dark:border-gray-800">
+              <Image src="/logo.png" alt="EduVisio Logo" width={40} height={40} className="object-cover scale-110" />
             </div>
             <div>
               <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-xl font-bold tracking-tight text-transparent dark:from-emerald-400 dark:to-teal-400">

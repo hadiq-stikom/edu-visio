@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { SubjectIcon } from '@/components/SubjectIcon';
 import { BookOpen, Search, ArrowRight, Compass, HelpCircle } from 'lucide-react';
 
@@ -588,20 +589,53 @@ export default function DashboardPage() {
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Hero Section */}
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 text-xs font-semibold mb-4 border border-emerald-200/50 dark:border-emerald-800/30">
-            <Compass className="h-3.5 w-3.5" />
-            Belajar Sains, Sosial & Agama Lebih Seru!
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 mb-16 mt-4">
+          {/* Left Text Column */}
+          <div className="flex-1 text-center md:text-left max-w-2xl">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 text-xs font-semibold mb-6 border border-emerald-200/50 dark:border-emerald-800/30">
+              <Compass className="h-3.5 w-3.5" />
+              Belajar Sains, Sosial & Agama Lebih Seru!
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6 leading-tight">
+              Pahami Konsep Sulit Jadi Lebih{' '}
+              <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent dark:from-emerald-400 dark:to-teal-400">
+                Mudah
+              </span>
+            </h1>
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              Mari bawa pengalaman belajarmu ke level selanjutnya! EduVisio hadir menemanimu memahami konsep pelajaran sekolah secara mendalam lewat eksplorasi visual yang interaktif dan menyenangkan.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
+              <button 
+                onClick={() => {
+                  window.scrollTo({
+                    top: document.getElementById('search-filter-section')?.offsetTop ? document.getElementById('search-filter-section')!.offsetTop - 100 : 500,
+                    behavior: 'smooth'
+                  });
+                }}
+                className="px-8 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl shadow-lg shadow-emerald-600/20 transition-all flex items-center gap-2 w-full sm:w-auto justify-center"
+              >
+                Mulai Belajar Sekarang <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-4">
-            Pahami Konsep Sulit Jadi Lebih{' '}
-            <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent dark:from-emerald-400 dark:to-teal-400">
-              Mudah
-            </span>
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
-            Ucapkan selamat tinggal pada hafalan membosankan! EduVisio membantumu memahami materi sekolah lewat simulasi visual yang interaktif dan menyenangkan.
-          </p>
+          
+          {/* Right Image Column */}
+          <div className="flex-1 w-full max-w-lg relative animate-fade-in-up">
+            <div className="relative w-full aspect-square rounded-[2.5rem] overflow-hidden shadow-2xl shadow-emerald-500/10 border-4 border-white dark:border-gray-800/80 backdrop-blur-sm z-10">
+               <Image 
+                 src="/hero.png" 
+                 alt="Siswa Madrasah Aliyah Belajar dengan EduVisio" 
+                 fill
+                 className="object-cover hover:scale-105 transition-transform duration-700"
+                 priority
+               />
+            </div>
+            
+            {/* Decorative floating elements */}
+            <div className="absolute -top-6 -right-6 w-28 h-28 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-pulse"></div>
+            <div className="absolute -bottom-6 -left-6 w-36 h-36 bg-gradient-to-tr from-teal-400 to-emerald-500 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-pulse" style={{ animationDelay: '1s' }}></div>
+          </div>
         </div>
 
         {/* Grade Tabs */}
@@ -622,7 +656,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Search & Category Filter Bar */}
-        <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-10 bg-white dark:bg-gray-900 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800/80 shadow-sm max-w-4xl mx-auto">
+        <div id="search-filter-section" className="flex flex-col md:flex-row gap-4 items-center justify-between mb-10 bg-white dark:bg-gray-900 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800/80 shadow-sm max-w-5xl mx-auto">
           <div className="relative w-full md:w-96">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 h-5 w-5" />
             <input
