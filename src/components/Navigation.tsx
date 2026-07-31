@@ -32,12 +32,15 @@ export const Header = () => {
           <Link href="/?category=IPS" className="text-sm font-medium text-gray-600 hover:text-emerald-600 transition-colors dark:text-gray-300 dark:hover:text-emerald-400">
             IPS
           </Link>
+          <Link href="/?category=AGAMA" className="text-sm font-medium text-gray-600 hover:text-emerald-600 transition-colors dark:text-gray-300 dark:hover:text-emerald-400">
+            AGAMA
+          </Link>
         </nav>
 
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1 text-xs font-semibold text-emerald-700 bg-emerald-50 dark:bg-emerald-950/50 dark:text-emerald-400 px-3 py-1.5 rounded-full border border-emerald-200/50 dark:border-emerald-800/30">
             <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            Demo Mode MA
+            EduVisio Beta
           </div>
         </div>
       </div>

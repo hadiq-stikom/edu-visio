@@ -29,6 +29,39 @@ import CompleteSquareModule from '@/components/CompleteSquareModule';
 import DiscriminantModule from '@/components/DiscriminantModule';
 import AlgebraTileSimulator from '@/components/AlgebraTileSimulator';
 import ParabolaCharacteristicsModule from '@/components/ParabolaCharacteristicsModule';
+import FunctionTransformationModule from '@/components/FunctionTransformationModule';
+import ParentFunctionsModule from '@/components/ParentFunctionsModule';
+import CircleSectorsModule from '@/components/CircleSectorsModule';
+import CombinatoricsModule from '@/components/CombinatoricsModule';
+import MultiplicationRuleModule from '@/components/MultiplicationRuleModule';
+import ProbabilityModule from '@/components/ProbabilityModule';
+import CoulombLawModule from '@/components/CoulombLawModule';
+import CapacitorModule from '@/components/CapacitorModule';
+import ElectricFieldModule from '@/components/ElectricFieldModule';
+import OhmLawModule from '@/components/OhmLawModule';
+import ResistorCircuitModule from '@/components/ResistorCircuitModule';
+import KirchhoffModule from '@/components/KirchhoffModule';
+import LorentzForceModule from '@/components/LorentzForceModule';
+import MagneticInductionModule from '@/components/MagneticInductionModule';
+import GGLInductionModule from '@/components/GGLInductionModule';
+import GeneratorTransformerModule from '@/components/GeneratorTransformerModule';
+import ACEquationRModule from '@/components/ACEquationRModule';
+import RLCSeriesModule from '@/components/RLCSeriesModule';
+import ACResonancePowerModule from '@/components/ACResonancePowerModule';
+import EMWaveSpectrumModule from '@/components/EMWaveSpectrumModule';
+import EMEnergyRadiationModule from '@/components/EMEnergyRadiationModule';
+import EMApplicationsModule from '@/components/EMApplicationsModule';
+import SemiconductorBasicsModule from '@/components/SemiconductorBasicsModule';
+import LogicGatesModule from '@/components/LogicGatesModule';
+import TimeDilationModule from '@/components/TimeDilationModule';
+import RelativisticVelocityModule from '@/components/RelativisticVelocityModule';
+import BlackbodyRadiationModule from '@/components/BlackbodyRadiationModule';
+import PhotoelectricEffectModule from '@/components/PhotoelectricEffectModule';
+import ComptonEffectModule from '@/components/ComptonEffectModule';
+import XRayModule from '@/components/XRayModule';
+import MassDefectModule from '@/components/MassDefectModule';
+import RadioactivityModule from '@/components/RadioactivityModule';
+import NuclearReactionModule from '@/components/NuclearReactionModule';
 
 function findSubjectBySimType(type: string): { slug: string; name: string } | null {
   for (const subject of SUBJECTS) {
@@ -110,6 +143,86 @@ export default function SimulationPage() {
           <AlgebraTileSimulator />
         ) : type === 'parabola-characteristics' ? (
           <ParabolaCharacteristicsModule />
+        ) : type === 'parent-functions' ? (
+          <ParentFunctionsModule />
+        ) : type === 'translation-reflection' ? (
+          <FunctionTransformationModule mode="translation-reflection" />
+        ) : type === 'dilation-rotation' ? (
+          <FunctionTransformationModule mode="dilation-rotation" />
+        ) : type === 'combined-transformation' ? (
+          <FunctionTransformationModule mode="combined-transformation" />
+        ) : type === 'circle-arc' ? (
+          <CircleSectorsModule mode="arc" />
+        ) : type === 'circle-sector' ? (
+          <CircleSectorsModule mode="area" />
+        ) : type === 'circle-combined' ? (
+          <CircleSectorsModule mode="combined" />
+        ) : type === 'multiplication-rule' ? (
+          <MultiplicationRuleModule />
+        ) : type === 'combinatorics' ? (
+          <CombinatoricsModule />
+        ) : type === 'probability-basic' ? (
+          <ProbabilityModule mode="basic" />
+        ) : type === 'probability-compound' ? (
+          <ProbabilityModule mode="compound" />
+        ) : type === 'coulomb-law' ? (
+          <CoulombLawModule />
+        ) : type === 'electric-field' ? (
+          <ElectricFieldModule />
+        ) : type === 'capacitor-circuit' ? (
+          <CapacitorModule mode="circuit" />
+        ) : type === 'capacitor-energy' ? (
+          <CapacitorModule mode="energy" />
+        ) : type === 'ohm-law' ? (
+          <OhmLawModule />
+        ) : type === 'resistor-circuit' ? (
+          <ResistorCircuitModule />
+        ) : type === 'kirchhoff-basic' ? (
+          <KirchhoffModule mode="basic" />
+        ) : type === 'kirchhoff-complex' ? (
+          <KirchhoffModule mode="complex" />
+        ) : type === 'lorentz-force' ? (
+          <LorentzForceModule />
+        ) : type === 'magnetic-induction' ? (
+          <MagneticInductionModule />
+        ) : type === 'ggl-induksi' ? (
+          <GGLInductionModule />
+        ) : type === 'generator-transformer' ? (
+          <GeneratorTransformerModule />
+        ) : type === 'ac-equation-r' ? (
+          <ACEquationRModule />
+        ) : type === 'rlc-series' ? (
+          <RLCSeriesModule />
+        ) : type === 'ac-resonance-power' ? (
+          <ACResonancePowerModule />
+        ) : type === 'em-spectrum' ? (
+          <EMWaveSpectrumModule />
+        ) : type === 'em-energy-radiation' ? (
+          <EMEnergyRadiationModule />
+        ) : type === 'em-applications' ? (
+          <EMApplicationsModule />
+        ) : type === 'semiconductor-basics' ? (
+          <SemiconductorBasicsModule />
+        ) : type === 'logic-gates' ? (
+          <LogicGatesModule />
+        ) : type === 'time-dilation' ? (
+          <TimeDilationModule />
+        ) : type === 'relativistic-velocity' ? (
+          <RelativisticVelocityModule />
+        ) : type === 'blackbody-radiation' ? (
+          <BlackbodyRadiationModule />
+        ) : type === 'photoelectric-effect' ? (
+          <PhotoelectricEffectModule />
+        ) : type === 'compton-effect' ? (
+          <ComptonEffectModule />
+        ) : type === 'x-ray-tube' ? (
+          <XRayModule />
+        ) : type === 'mass-defect' ? (
+          <MassDefectModule />
+        ) : type === 'radioactivity' ? (
+          <RadioactivityModule />
+        ) : type === 'nuclear-reaction' ? (
+          <NuclearReactionModule />
         ) : (
           <div className="text-center py-20 bg-white rounded-3xl border border-gray-200">
             <h2 className="text-2xl font-bold">Simulasi &ldquo;{type}&rdquo; dalam pengembangan.</h2>

@@ -3,35 +3,85 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { SUBJECTS } from '@/lib/data';
-import { ArrowLeft, PlayCircle, BookOpen, Clock, ChevronDown } from 'lucide-react';
+import { SUBJECTS, Subject } from '@/lib/data';
+import { ArrowLeft, PlayCircle, Clock, ChevronDown } from 'lucide-react';
 import { Header, Footer } from '@/components/Navigation';
+
+const GRADE_MAP: Record<string, string> = {
+  '10': 'Kelas 10',
+  '11': 'Kelas 11',
+  '12': 'Kelas 12',
+};
+
+function resolveSubject(slug: string): { subject: Subject | undefined; gradeLabel: string | null } {
+  const direct = SUBJECTS.find((s) => s.slug === slug);
+  if (direct) {
+    const gradeMatch = slug.match(/-(\d{2})$/);
+    const gradeLabel = gradeMatch ? (GRADE_MAP[gradeMatch[1]] ?? null) : null;
+    return { subject: direct, gradeLabel };
+  }
+  return { subject: undefined, gradeLabel: null };
+}
 
 export default function SubjectPage() {
   const { slug } = useParams();
-  const subject = SUBJECTS.find((s) => s.slug === slug);
+  const { subject, gradeLabel } = resolveSubject(slug as string);
   const storageKey = `openChapters_${slug}`;
 
   const [openChapters, setOpenChapters] = useState<Record<string, boolean>>({});
+  const [isLoaded, setIsLoaded] = useState(false);
 
   React.useEffect(() => {
     const saved = sessionStorage.getItem(storageKey);
+    const lastOpened = sessionStorage.getItem(`${storageKey}_last`);
+    
     if (saved) {
-      try { setOpenChapters(JSON.parse(saved)); } catch { /* ignore */ }
+      try { 
+        const parsed = JSON.parse(saved);
+        setOpenChapters(parsed); 
+        
+        // Auto-scroll to the last opened chapter
+        setTimeout(() => {
+          let targetId = lastOpened;
+          if (!targetId || !parsed[targetId]) {
+            targetId = Object.keys(parsed).find(k => parsed[k]) || null;
+          }
+          
+          if (targetId) {
+            const el = document.getElementById(targetId);
+            if (el) {
+              const y = el.getBoundingClientRect().top + window.scrollY - 100;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          }
+        }, 150);
+      } catch { /* ignore */ }
     }
+    setIsLoaded(true);
   }, [storageKey]);
 
   React.useEffect(() => {
-    sessionStorage.setItem(storageKey, JSON.stringify(openChapters));
-  }, [openChapters, storageKey]);
+    if (isLoaded) {
+      sessionStorage.setItem(storageKey, JSON.stringify(openChapters));
+    }
+  }, [openChapters, storageKey, isLoaded]);
 
   if (!subject) return <div className="p-10 text-center">Mata Pelajaran tidak ditemukan.</div>;
 
   const toggleChapter = (chapterId: string) => {
-    setOpenChapters((prev) => ({
-      ...prev,
-      [chapterId]: !prev[chapterId],
-    }));
+    setOpenChapters((prev) => {
+      const newState = {
+        ...prev,
+        [chapterId]: !prev[chapterId],
+      };
+      
+      // Save this as the last interacted chapter if we are opening it
+      if (newState[chapterId]) {
+        sessionStorage.setItem(`${storageKey}_last`, chapterId);
+      }
+      
+      return newState;
+    });
   };
 
   return (
@@ -44,7 +94,14 @@ export default function SubjectPage() {
           </Link>
 
           <div className="mb-10">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{subject.name}</h1>
+            <div className="flex items-center gap-3 mb-2">
+              <h1 className="text-4xl font-bold text-gray-900 dark:text-white">{subject.name}</h1>
+              {gradeLabel && (
+                <span className="text-sm font-semibold px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300">
+                  {gradeLabel}
+                </span>
+              )}
+            </div>
             <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl">{subject.description}</p>
           </div>
 
@@ -53,7 +110,7 @@ export default function SubjectPage() {
               const isOpen = openChapters[chapter.id] ?? false;
 
               return (
-                <div key={chapter.id} className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
+                <div id={chapter.id} key={chapter.id} className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
                   <button
                     onClick={() => toggleChapter(chapter.id)}
                     className="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
