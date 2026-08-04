@@ -58,6 +58,28 @@ import RelativisticVelocityModule from '@/components/RelativisticVelocityModule'
 import BlackbodyRadiationModule from '@/components/BlackbodyRadiationModule';
 import PhotoelectricEffectModule from '@/components/PhotoelectricEffectModule';
 import ComptonEffectModule from '@/components/ComptonEffectModule';
+import AcidBaseModule from '@/components/AcidBaseModule';
+import PhStrengthModule from '@/components/PhStrengthModule';
+import BufferTitrationModule from '@/components/BufferTitrationModule';
+import ColligativeModule from '@/components/ColligativeModule';
+import ColloidModule from '@/components/ColloidModule';
+import ElectrolyteModule from '@/components/ElectrolyteModule';
+import RedoxModule from '@/components/RedoxModule';
+import VoltaicCellModule from '@/components/VoltaicCellModule';
+import StandardPotentialModule from '@/components/StandardPotentialModule';
+import ElectrochemAppModule from '@/components/ElectrochemAppModule';
+import FunctionalGroupsModule from '@/components/FunctionalGroupsModule';
+import OrganicReactionsModule from '@/components/OrganicReactionsModule';
+import CarbonChainModule from '@/components/CarbonChainModule';
+import IupacNomenclatureModule from '@/components/IupacNomenclatureModule';
+import OrganicImpactModule from '@/components/OrganicImpactModule';
+import PolymerizationModule from '@/components/PolymerizationModule';
+import PolymerStructureModule from '@/components/PolymerStructureModule';
+import PolymerTypesModule from '@/components/PolymerTypesModule';
+import PolymerPropertiesModule from '@/components/PolymerPropertiesModule';
+import PlasticDegradationModule from '@/components/PlasticDegradationModule';
+import NaturalPolymersModule from '@/components/NaturalPolymersModule';
+import BiopolymersModule from '@/components/BiopolymersModule';
 import XRayModule from '@/components/XRayModule';
 import MassDefectModule from '@/components/MassDefectModule';
 import RadioactivityModule from '@/components/RadioactivityModule';
@@ -223,6 +245,50 @@ export default function SimulationPage() {
           <RadioactivityModule />
         ) : type === 'nuclear-reaction' ? (
           <NuclearReactionModule />
+        ) : type === 'acid-base' ? (
+          <AcidBaseModule />
+        ) : type === 'ph-strength' ? (
+          <PhStrengthModule />
+        ) : type === 'buffer-titration' ? (
+          <BufferTitrationModule />
+        ) : type === 'colligative' ? (
+          <ColligativeModule />
+        ) : type === 'colloid' ? (
+          <ColloidModule />
+        ) : type === 'electrolyte' ? (
+          <ElectrolyteModule />
+        ) : type === 'redox' ? (
+          <RedoxModule />
+        ) : type === 'voltaic-cell' ? (
+          <VoltaicCellModule />
+        ) : type === 'standard-potential' ? (
+          <StandardPotentialModule />
+        ) : type === 'electrochem-app' ? (
+          <ElectrochemAppModule />
+        ) : type === 'functional-groups' ? (
+          <FunctionalGroupsModule />
+        ) : type === 'organic-reactions' ? (
+          <OrganicReactionsModule />
+        ) : type === 'carbon-chain' ? (
+          <CarbonChainModule />
+        ) : type === 'iupac-nomenclature' ? (
+          <IupacNomenclatureModule />
+        ) : type === 'organic-impact' ? (
+          <OrganicImpactModule />
+        ) : type === 'polymerization' ? (
+          <PolymerizationModule />
+        ) : type === 'polymer-structure' ? (
+          <PolymerStructureModule />
+        ) : type === 'polymer-types' ? (
+          <PolymerTypesModule />
+        ) : type === 'polymer-properties' ? (
+          <PolymerPropertiesModule />
+        ) : type === 'plastic-degradation' ? (
+          <PlasticDegradationModule />
+        ) : type === 'natural-polymers' ? (
+          <NaturalPolymersModule />
+        ) : type === 'biopolymers' ? (
+          <BiopolymersModule />
         ) : (
           <div className="text-center py-20 bg-white rounded-3xl border border-gray-200">
             <h2 className="text-2xl font-bold">Simulasi &ldquo;{type}&rdquo; dalam pengembangan.</h2>

@@ -423,9 +423,9 @@ const modulesData: Record<Grade, ModuleCard[]> = {
       title: 'Kimia',
       category: 'MIPA',
       slug: 'kimia',
-      description: 'Hidrokarbon, senyawa organik, polymer, elektrokimia, dan nuklir.',
-      moduleCount: 10,
-      status: 'Dalam Pengembangan',
+      description: 'Sifat asam-basa, elektrokimia, senyawa karbon, dan makromolekul organik.',
+      moduleCount: 22,
+      status: 'Ready',
       iconName: 'FlaskConical',
       colorTheme: {
         bg: 'bg-amber-500/10 dark:bg-amber-500/20',

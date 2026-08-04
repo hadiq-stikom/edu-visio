@@ -319,19 +319,38 @@ export const SUBJECTS: Subject[] = [
   },
   {
     id: 'kim-12', slug: 'kimia-12', name: 'Kimia', category: 'MIPA',
-    description: 'Hidrokarbon, senyawa organik, polimer, elektrokimia, dan nuklir.',
+    description: 'Sifat asam-basa, elektrokimia, senyawa karbon, dan makromolekul organik.',
     iconName: 'FlaskConical', colorTheme: colorThemes.amber,
     chapters: [
-      { id: 'kim12-bab1', title: 'Bab 1: Hidrokarbon', topics: [
-        { id: 'kim12-1-1', title: 'Alkana, Alkena, Alkuna', description: 'Klasifikasi hidrokarbon berdasarkan ikatan.', duration: '25 Menit', difficulty: 'Mudah', hasSimulation: false },
-        { id: 'kim12-1-2', title: 'Isomer', description: 'Isomer struktur dan posisi senyawa organik.', duration: '25 Menit', difficulty: 'Sedang', hasSimulation: false },
+      { id: 'kim12-bab1', title: 'Bab 1: Larutan dan Koloid', topics: [
+        { id: 'kim12-1-1', title: 'Sifat dan Konsep Asam Basa', description: 'Konsep asam-basa Arrhenius, Brønsted-Lowry, dan Lewis.', duration: '3 JP', difficulty: 'Mudah', hasSimulation: true, simulationType: 'acid-base' },
+        { id: 'kim12-1-2', title: 'Kekuatan dan pH Asam Basa', description: 'Perhitungan pH asam-basa kuat dan lemah.', duration: '3 JP', difficulty: 'Sedang', hasSimulation: true, simulationType: 'ph-strength' },
+        { id: 'kim12-1-3', title: 'Kesetimbangan dalam Larutan', description: 'Larutan penyangga dan prinsip kerja titrasi.', duration: '3 JP', difficulty: 'Sulit', hasSimulation: true, simulationType: 'buffer-titration' },
+        { id: 'kim12-1-4', title: 'Sifat Koligatif Larutan', description: 'Fenomena sifat koligatif pada larutan.', duration: '3 JP', difficulty: 'Sedang', hasSimulation: true, simulationType: 'colligative' },
+        { id: 'kim12-1-5', title: 'Koloid dan Proyek Akhir', description: 'Sifat dan pembuatan produk sistem koloid.', duration: '3 JP', difficulty: 'Mudah', hasSimulation: true, simulationType: 'colloid' },
       ]},
-      { id: 'kim12-bab2', title: 'Bab 2: Senyawa Derivat', topics: [
-        { id: 'kim12-2-1', title: 'Alkohol, Aldehid, Keton', description: 'Gugus fungsi dan penamaan senyawa organik.', duration: '25 Menit', difficulty: 'Sedang', hasSimulation: false },
+      { id: 'kim12-bab2', title: 'Bab 2: Elektrokimia', topics: [
+        { id: 'kim12-2-1', title: 'Elektrolit', description: 'Daya hantar listrik pada berbagai jenis larutan.', duration: '3 JP', difficulty: 'Mudah', hasSimulation: true, simulationType: 'electrolyte' },
+        { id: 'kim12-2-2', title: 'Redoks', description: 'Penyetaraan reaksi reduksi dan oksidasi.', duration: '3 JP', difficulty: 'Sedang', hasSimulation: true, simulationType: 'redox' },
+        { id: 'kim12-2-3', title: 'Sel Elektrokimia', description: 'Prinsip dan perancangan sel volta.', duration: '3 JP', difficulty: 'Sulit', hasSimulation: true, simulationType: 'voltaic-cell' },
+        { id: 'kim12-2-4', title: 'Potensial Standar', description: 'Kespontanan reaksi berdasarkan data potensial standar.', duration: '3 JP', difficulty: 'Sedang', hasSimulation: true, simulationType: 'standard-potential' },
+        { id: 'kim12-2-5', title: 'Aplikasi Elektrokimia', description: 'Penerapan sel elektrokimia dalam teknologi energi.', duration: '3 JP', difficulty: 'Mudah', hasSimulation: true, simulationType: 'electrochem-app' },
       ]},
-      { id: 'kim12-bab3', title: 'Bab 3: Elektrokimia', topics: [
-        { id: 'kim12-3-1', title: 'Sel Galvani', description: 'Potensial sel dan energi reaksi.', duration: '30 Menit', difficulty: 'Sulit', hasSimulation: false },
-        { id: 'kim12-3-2', title: 'Elektrolisis', description: 'Pelepasan muatan pada larutan elektrolit.', duration: '25 Menit', difficulty: 'Sedang', hasSimulation: false },
+      { id: 'kim12-bab3', title: 'Bab 3: Gugus Fungsi', topics: [
+        { id: 'kim12-3-1', title: 'Rantai Karbon', description: 'Keteraturan rantai karbon pada senyawa organik.', duration: '3 JP', difficulty: 'Mudah', hasSimulation: true, simulationType: 'carbon-chain' },
+        { id: 'kim12-3-2', title: 'Gugus Fungsi', description: 'Identifikasi alkohol, eter, aldehid, keton, dll.', duration: '3 JP', difficulty: 'Sedang', hasSimulation: true, simulationType: 'functional-groups' },
+        { id: 'kim12-3-3', title: 'Tata Nama Senyawa', description: 'Penamaan senyawa organik berdasarkan standar IUPAC.', duration: '3 JP', difficulty: 'Sedang', hasSimulation: true, simulationType: 'iupac-nomenclature' },
+        { id: 'kim12-3-4', title: 'Reaksi-Reaksi Spesifik', description: 'Reaksi adisi, substitusi, dan eliminasi.', duration: '3 JP', difficulty: 'Sulit', hasSimulation: true, simulationType: 'organic-reactions' },
+        { id: 'kim12-3-5', title: 'Manfaat dan Dampak', description: 'Evaluasi dampak senyawa organik bagi kehidupan.', duration: '3 JP', difficulty: 'Mudah', hasSimulation: true, simulationType: 'organic-impact' },
+      ]},
+      { id: 'kim12-bab4', title: 'Bab 4: Makromolekul Organik', topics: [
+        { id: 'kim12-4-1', title: 'Pengertian dan Struktur Polimer', description: 'Konsep dasar tentang makromolekul polimer.', duration: '3 JP', difficulty: 'Mudah', hasSimulation: true, simulationType: 'polymer-structure' },
+        { id: 'kim12-4-2', title: 'Reaksi Polimerisasi', description: 'Mekanisme polimerisasi adisi dan kondensasi.', duration: '3 JP', difficulty: 'Sedang', hasSimulation: true, simulationType: 'polymerization' },
+        { id: 'kim12-4-3', title: 'Jenis-jenis Polimer', description: 'Klasifikasi polimer berdasarkan asal dan sifatnya.', duration: '3 JP', difficulty: 'Mudah', hasSimulation: true, simulationType: 'polymer-types' },
+        { id: 'kim12-4-4', title: 'Hubungan Struktur dan Sifat', description: 'Kaitan struktur mikroskopis dengan sifat termal polimer.', duration: '3 JP', difficulty: 'Sedang', hasSimulation: true, simulationType: 'polymer-properties' },
+        { id: 'kim12-4-5', title: 'Plastik dan Degradasi', description: 'Analisis dampak lingkungan dari sampah plastik.', duration: '3 JP', difficulty: 'Mudah', hasSimulation: true, simulationType: 'plastic-degradation' },
+        { id: 'kim12-4-6', title: 'Polimer Alam', description: 'Eksplorasi material polimer alam khas Indonesia.', duration: '3 JP', difficulty: 'Mudah', hasSimulation: true, simulationType: 'natural-polymers' },
+        { id: 'kim12-4-7', title: 'Biopolimer Organik', description: 'Peran protein, karbohidrat, dan lemak pada tubuh.', duration: '3 JP', difficulty: 'Sedang', hasSimulation: true, simulationType: 'biopolymers' },
       ]},
     ],
   },
