@@ -92,7 +92,7 @@ export default function ColloidModule() {
   };
 
   const renderParticles = () => {
-    const items = [];
+    const items: React.ReactNode[] = [];
     activeMixture.particles.forEach((pConf, idx) => {
       for (let j = 0; j < pConf.count; j++) {
         // If it settles, particles slowly fall to the bottom based on settlingTime

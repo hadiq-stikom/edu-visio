@@ -102,7 +102,7 @@ export default function ColligativeModule() {
     // i=2 -> 12 particles
     // i=3 -> 18 particles
     const baseCount = 6;
-    const items = [];
+    const items: React.ReactNode[] = [];
     
     for (let j = 0; j < baseCount; j++) {
       activeSolute.particles.forEach((p, idx) => {
