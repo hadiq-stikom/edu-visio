@@ -84,6 +84,11 @@ import XRayModule from '@/components/XRayModule';
 import MassDefectModule from '@/components/MassDefectModule';
 import RadioactivityModule from '@/components/RadioactivityModule';
 import NuclearReactionModule from '@/components/NuclearReactionModule';
+import ArabicSportsModule from '@/components/ArabicSportsModule';
+import ArabicYouthModule from '@/components/ArabicYouthModule';
+import ArabicPoetryModule from '@/components/ArabicPoetryModule';
+import IslamicCivModule from '@/components/IslamicCivModule';
+import UniversityStudyModule from '@/components/UniversityStudyModule';
 
 function findSubjectBySimType(type: string): { slug: string; name: string } | null {
   for (const subject of SUBJECTS) {
@@ -289,6 +294,16 @@ export default function SimulationPage() {
           <NaturalPolymersModule />
         ) : type === 'biopolymers' ? (
           <BiopolymersModule />
+        ) : type === 'arabic-sports' ? (
+          <ArabicSportsModule />
+        ) : type === 'arabic-youth' ? (
+          <ArabicYouthModule />
+        ) : type === 'arabic-poetry' ? (
+          <ArabicPoetryModule />
+        ) : type === 'islamic-civ' ? (
+          <IslamicCivModule />
+        ) : type === 'university-study' ? (
+          <UniversityStudyModule />
         ) : (
           <div className="text-center py-20 bg-white rounded-3xl border border-gray-200">
             <h2 className="text-2xl font-bold">Simulasi &ldquo;{type}&rdquo; dalam pengembangan.</h2>

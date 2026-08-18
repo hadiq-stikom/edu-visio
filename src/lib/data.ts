@@ -642,7 +642,23 @@ export const SUBJECTS: Subject[] = [
     id: 'arab-12', slug: 'bahasa-arab-12', name: 'Bahasa Arab', category: 'AGAMA',
     description: 'Komunikasi lanjut dan penulisan karya ilmiah Arab.',
     iconName: 'BookOpen', colorTheme: colorThemes.rose,
-    chapters: [],
+    chapters: [
+      { id: 'arab12-bab1', title: 'Bab 1: Olahraga (الرياضة)', topics: [
+        { id: 'arab12-1-1', title: 'Na\'at dan Idhafah', description: 'Mempelajari kata sifat dan kata majemuk dalam konteks olahraga.', duration: '20 Menit', difficulty: 'Mudah', hasSimulation: true, simulationType: 'arabic-sports' },
+      ]},
+      { id: 'arab12-bab2', title: 'Bab 2: Pemuda (الشباب)', topics: [
+        { id: 'arab12-2-1', title: 'Fi\'il Mabni Ma\'lum & Majhul', description: 'Mempelajari kata kerja bentuk aktif dan pasif.', duration: '25 Menit', difficulty: 'Sedang', hasSimulation: true, simulationType: 'arabic-youth' },
+      ]},
+      { id: 'arab12-bab3', title: 'Bab 3: Puisi Arab (الشعر العربي)', topics: [
+        { id: 'arab12-3-1', title: 'Isim Tafdhil', description: 'Mempelajari perbandingan dan superlatif dalam bahasa Arab.', duration: '20 Menit', difficulty: 'Sedang', hasSimulation: true, simulationType: 'arabic-poetry' },
+      ]},
+      { id: 'arab12-bab4', title: 'Bab 4: Peradaban Islam (الحضارة الإسلامية)', topics: [
+        { id: 'arab12-4-1', title: 'Asmaul Khamsah & Af\'alul Khamsah', description: 'Mempelajari 5 kata benda khusus dan 5 bentuk kata kerja.', duration: '30 Menit', difficulty: 'Sulit', hasSimulation: true, simulationType: 'islamic-civ' },
+      ]},
+      { id: 'arab12-bab5', title: 'Bab 5: Studi di Universitas (الدراسة في الجامعة)', topics: [
+        { id: 'arab12-5-1', title: 'I\'rab Fi\'il Mudhari\'', description: 'Mempelajari Fi\'il Mudhari\' Marfu\', Mansub, dan Majzum.', duration: '25 Menit', difficulty: 'Sulit', hasSimulation: true, simulationType: 'university-study' },
+      ]},
+    ],
   },
   {
     id: 'aqidah-12', slug: 'aqidah-akhlak-12', name: 'Aqidah Akhlak', category: 'AGAMA',
